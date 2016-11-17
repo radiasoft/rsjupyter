@@ -50,4 +50,7 @@ jspm_packages
 # Yarn Integrity file
 .yarn-integrity
 
+# Project ignores
 .venv
+lib
+rsjupyter/static

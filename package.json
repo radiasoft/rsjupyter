@@ -16,13 +16,17 @@
   },
   "homepage": "https://github.com/radiasoft/rsjupyter",
   "license": "Apache-2.0",
+  "main": "lib/index.js",
   "name": "@radiasoft/rsjupyter",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/radiasoft/rsjupyter.git"
   },
   "scripts": {
+    "build": "npm run build:src && npm run build:extension",
+    "build:extension": "node scripts/buildExtension.js",  
     "build:src": "tsc --project src"
   },
+  "typings": "lib/index.d.ts",
   "version": "0.0.1"
 }
