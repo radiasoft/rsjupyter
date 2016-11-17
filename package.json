@@ -25,7 +25,9 @@
   "scripts": {
     "build": "npm run build:src && npm run build:extension",
     "build:extension": "node scripts/buildExtension.js",  
-    "build:src": "tsc --project src"
+    "build:src": "tsc --project src",
+    "clean": "rimraf lib && rimraf rsjupyter/static",
+    "prepublish": "npm run build"
   },
   "typings": "lib/index.d.ts",
   "version": "0.0.1"

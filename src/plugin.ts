@@ -28,14 +28,14 @@ function activateLauncher(app: JupyterLab, palette: ICommandPalette, linker: ICo
     let model = new RSLauncherModel();
     let widget = new RSLauncherWidget(linker, model, 'rs-launcher', 'radiasoft');
 
-    add.commands.addCommand('rslauncher:show', {
+    app.commands.addCommand('rslauncher:show', {
         label: 'Show Launcher',
         execute: () => {
             if (!widget.isAttached) {
                 app.shell.addToLeftArea(widget);
             }
+            app.shell.activateLeft(widget.id);
         }
-        app.shell.activateLeft(widget.id);
     });
     palette.addItem({ command: 'rslauncher:show', category: 'Help' });
 
