@@ -15,6 +15,8 @@ import {
     IRSLauncher, RSLauncherModel, RSLauncherWidget, RS_LAUNCHER_ID
 } from './';
 
+import './index.css';
+
 export
 const rslaunchProvider: JupyterLabPlugin<IRSLauncher> = {
     id: RS_LAUNCHER_ID,

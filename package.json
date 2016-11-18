@@ -5,13 +5,15 @@
   },
   "dependencies": {
     "jupyterlab": "^0.8.0",
+    "jupyter-js-widgets": "2.0.5",
     "phosphor": "^0.6.1"
   },
   "description": "Radiasoft Jupyter Stuff",
   "devDependencies": {
     "@jupyterlab/extension-builder": "^0.8.1",
     "typescript": "^2.0.6",
-    "rimraf": "^2.4.2"
+    "rimraf": "^2.4.2",
+    "fs-extra": "^0.30.0"
   },
   "homepage": "https://github.com/radiasoft/rsjupyter",
   "license": "Apache-2.0",
@@ -24,10 +26,10 @@
   "scripts": {
     "build": "npm run build:src && npm run build:extension",
     "build:extension": "node scripts/build_extension.js",  
-    "build:src": "tsc --project src",
+    "build:src": "tsc --project src && node scripts/copyfiles.js",
     "clean": "rimraf lib && rimraf rsjupyter/static",
     "prepublish": "npm run build",
-    "pyinstall": "npm run clean && npm run build && pip install ."
+    "pyinstall": "pip uninstall -y rsjupyter; npm run clean && npm run build && pip install ."
   },
   "version": "0.0.1"
 }

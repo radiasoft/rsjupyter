@@ -36,7 +36,7 @@ setup_args = dict(
         'share/jupyter/labextensions/rsjupyter', [
             'rsjupyter/static/rsjupyter.bundle.js',
             'rsjupyter/static/rsjupyter.bundle.js.manifest',
-            # 'rsjupyter/static/rsjupyter.css',
+            'rsjupyter/static/rsjupyter.css',
         ])],
     include_package_data = True,
     install_requires = [

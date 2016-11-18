@@ -14,9 +14,12 @@ import {
     ICommandLinker
 } from 'jupyterlab/lib/commandlinker';
 
+const BODY_CLASS = 'rs-Launcher-body';
+
+const DIALOG_CLASS = 'rs-Launcher-dialog';
+
 export
-interface IRSLauncher {
-}
+interface IRSLauncher {}
 
 export
 const RS_LAUNCHER_ID = 'org.radiasoft.jupyterlab.launcher';
@@ -25,8 +28,7 @@ export
 const IRSLauncher = new Token<IRSLauncher>(RS_LAUNCHER_ID);
 
 export
-class RSLauncherModel extends VDomModel implements IRSLauncher {
-}
+class RSLauncherModel extends VDomModel implements IRSLauncher {}
 
 export
 class RSLauncherWidget extends VDomWidget<RSLauncherModel> {
@@ -39,7 +41,9 @@ class RSLauncherWidget extends VDomWidget<RSLauncherModel> {
     }
 
     protected render(): VNode | VNode[] {
-        return h.div('hello from radiasoft')
+        let body = h.div({ className: BODY_CLASS  }, 'hello from radiasoft');
+
+        return h.div({ className: DIALOG_CLASS }, [body]);
     }
 
     private _linker: ICommandLinker = null;
