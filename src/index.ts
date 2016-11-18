@@ -3,7 +3,7 @@ import {
 } from 'phosphor/lib/core/token';
 
 import {
-    VNode
+    h, VNode
 } from 'phosphor/lib/ui/vdom';
 
 import {
@@ -39,7 +39,7 @@ class RSLauncherWidget extends VDomWidget<RSLauncherModel> {
     }
 
     protected render(): VNode | VNode[] {
-        return [];
+        return h.div('hello from radiasoft')
     }
 
     private _linker: ICommandLinker = null;

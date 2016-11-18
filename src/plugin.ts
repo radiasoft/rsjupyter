@@ -24,12 +24,14 @@ const rslaunchProvider: JupyterLabPlugin<IRSLauncher> = {
     provides: IRSLauncher
 }
 
+export default rslaunchProvider;
+
 function activateLauncher(app: JupyterLab, palette: ICommandPalette, linker: ICommandLinker): IRSLauncher {
     let model = new RSLauncherModel();
     let widget = new RSLauncherWidget(linker, model, 'rs-launcher', 'radiasoft');
 
     app.commands.addCommand('rslauncher:show', {
-        label: 'Show Launcher',
+        label: 'Show RSLauncher',
         execute: () => {
             if (!widget.isAttached) {
                 app.shell.addToLeftArea(widget);
