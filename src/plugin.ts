@@ -12,7 +12,7 @@ import {
 
 
 import {
-    IRSLauncher, RSLauncherModel, RSLauncherWidget, RS_LAUNCHER_ID
+    IRSLauncher, RSLauncherModel, RSLauncherWidget, RS_LAUNCHER_ID, IRSLauncherItem
 } from './';
 
 import './index.css';
@@ -31,6 +31,14 @@ export default rslaunchProvider;
 function activateLauncher(app: JupyterLab, palette: ICommandPalette, linker: ICommandLinker): IRSLauncher {
     let model = new RSLauncherModel();
     let widget = new RSLauncherWidget(linker, model, 'rs-launcher', 'radiasoft');
+    let defaults: IRSLauncherItem[] = [
+        {
+            name: 'Comsol',
+            url: 'https://comsol.radiasoft.org'
+        }
+    ]
+
+    defaults.forEach(item => { model.add(item) });
 
     app.commands.addCommand('rslauncher:show', {
         label: 'Show RSLauncher',

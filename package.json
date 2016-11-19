@@ -4,9 +4,9 @@
     "url": "https://github.com/radiasoft/rsjupyter/issues"
   },
   "dependencies": {
-    "jupyterlab": "^0.8.0",
+    "jupyterlab": "^0.9.0",
     "jupyter-js-widgets": "2.0.5",
-    "phosphor": "^0.6.1"
+    "phosphor": "^0.7.0"
   },
   "description": "Radiasoft Jupyter Stuff",
   "devDependencies": {
@@ -23,6 +23,7 @@
     "type": "git",
     "url": "git+https://github.com/radiasoft/rsjupyter.git"
   },
+  "typings": "lib/index.d.ts",
   "scripts": {
     "build": "npm run build:src && npm run build:extension",
     "build:extension": "node scripts/build_extension.js",  

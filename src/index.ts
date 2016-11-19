@@ -1,10 +1,20 @@
 import {
+    IIterator, map, toArray
+} from 'phosphor/lib/algorithm/iteration';
+
+
+import {
     Token
 } from 'phosphor/lib/core/token';
 
 import {
     h, VNode
 } from 'phosphor/lib/ui/vdom';
+
+import {
+    Vector
+} from 'phosphor/lib/collections/vector';
+
 
 import {
     VDomWidget, VDomModel
@@ -14,12 +24,24 @@ import {
     ICommandLinker
 } from 'jupyterlab/lib/commandlinker';
 
-const BODY_CLASS = 'rs-Launcher-body';
+const BODY_CLASS = 'rs-LauncherWidget-body';
 
-const DIALOG_CLASS = 'rs-Launcher-dialog';
+const DIALOG_CLASS = 'rs-LauncherWidget-dialog';
+
+const CHILD_CLASS = 'rs-LauncherWidget-child';
+
+const LINK_CLASS = 'rs-LauncherWidget-link';
 
 export
-interface IRSLauncher {}
+interface IRSLauncherItem {
+    name: string;
+    url: string;
+}
+
+export
+interface IRSLauncher {
+    add(item: IRSLauncherItem): void;
+}
 
 export
 const RS_LAUNCHER_ID = 'org.radiasoft.jupyterlab.launcher';
@@ -28,7 +50,23 @@ export
 const IRSLauncher = new Token<IRSLauncher>(RS_LAUNCHER_ID);
 
 export
-class RSLauncherModel extends VDomModel implements IRSLauncher {}
+class RSLauncherModel extends VDomModel implements IRSLauncher {
+    constructor() {
+        super();
+        this._items = new Vector<IRSLauncherItem>();
+    }
+
+    add(item: IRSLauncherItem): void {
+        this._items.pushBack(item);
+        this.stateChanged.emit(void 0);
+    }
+
+    items(): IIterator<IRSLauncherItem> {
+        return this._items.iter();    
+    }
+
+    private _items: Vector<IRSLauncherItem> = null;
+}
 
 export
 class RSLauncherWidget extends VDomWidget<RSLauncherModel> {
@@ -41,9 +79,28 @@ class RSLauncherWidget extends VDomWidget<RSLauncherModel> {
     }
 
     protected render(): VNode | VNode[] {
-        let body = h.div({ className: BODY_CLASS  }, 'hello from radiasoft');
+        let children = map(
+            this.model.items(),
+            item => {
+                let child = h.div(
+                    { className: CHILD_CLASS },
+                    h.a(
+                        { className: LINK_CLASS, target: '_blank', href: item.url },
+                        item.name
+                    )
+                );
 
-        return h.div({ className: DIALOG_CLASS }, [body]);
+                return child; 
+            }
+        );
+
+        return h.div(
+            { className: DIALOG_CLASS }, 
+            h.div(
+                { className: BODY_CLASS  },
+                toArray(children)
+            )
+        );
     }
 
     private _linker: ICommandLinker = null;
