@@ -24,18 +24,21 @@ import {
     ICommandLinker
 } from 'jupyterlab/lib/commandlinker';
 
-const BODY_CLASS = 'rs-LauncherWidget-body';
+const LAUNCHER_CLASS = 'jp-LauncherWidget';
+    
+const BODY_CLASS = 'jp-LauncherWidget-body';
 
-const DIALOG_CLASS = 'rs-LauncherWidget-dialog';
+const DIALOG_CLASS = 'jp-LauncherWidget-dialog';
 
-const CHILD_CLASS = 'rs-LauncherWidget-child';
+const TEXT_CLASS = 'jp-LauncherWidget-text';
 
-const LINK_CLASS = 'rs-LauncherWidget-link';
+const IMAGE_CLASS = 'jp-LauncherWidget-image';
 
 export
 interface IRSLauncherItem {
     name: string;
     url: string;
+    imgClass: string;
 }
 
 export
@@ -73,21 +76,27 @@ class RSLauncherWidget extends VDomWidget<RSLauncherModel> {
     constructor(linker: ICommandLinker, model: RSLauncherModel, id: string, label: string) {
         super();
         this._linker = linker;
-        this.model = model
+        this.addClass(LAUNCHER_CLASS);
         this.id = id;
+        this.model = model
         this.title.label = label;
+
     }
 
     protected render(): VNode | VNode[] {
         let children = map(
             this.model.items(),
             item => {
+                let icon = h.div(
+                    { className: item.imgClass + ' ' + IMAGE_CLASS }
+                );
+                let label = h.div(
+                    { className: TEXT_CLASS },
+                    item.name
+                );
+
                 let child = h.div(
-                    { className: CHILD_CLASS },
-                    h.a(
-                        { className: LINK_CLASS, target: '_blank', href: item.url },
-                        item.name
-                    )
+                    [icon, label]
                 );
 
                 return child; 
