@@ -1,4 +1,8 @@
 import {
+   JSONObject 
+} from 'phosphor/lib/algorithm/json';
+
+import {
     JupyterLabPlugin, JupyterLab
 } from 'jupyterlab/lib/application';
 
@@ -12,7 +16,8 @@ import {
 
 
 import {
-    IRSLauncher, RSLauncherModel, RSLauncherWidget, RS_LAUNCHER_ID, IRSLauncherItem
+    IRSLauncher, RSLauncherModel, RSLauncherWidget, 
+    RS_LAUNCHER_ID, IRSLauncherItem, RS_LAUNCH_COMMAND
 } from './';
 
 import './index.css';
@@ -41,6 +46,15 @@ function activateLauncher(app: JupyterLab, palette: ICommandPalette, linker: ICo
 
     defaults.forEach(item => { model.add(item) });
 
+    app.commands.addCommand(
+        RS_LAUNCH_COMMAND, 
+        {
+            execute: (args: JSONObject) => {
+                window.open(args['url'] as string, '_blank'); 
+            }
+        }
+    );
+
     app.commands.addCommand('rslauncher:show', {
         label: 'Show RSLauncher',
         execute: () => {
@@ -51,6 +65,7 @@ function activateLauncher(app: JupyterLab, palette: ICommandPalette, linker: ICo
         }
     });
     palette.addItem({ command: 'rslauncher:show', category: 'Help' });
+     
 
     app.shell.addToLeftArea(widget);
 

@@ -25,14 +25,27 @@ import {
 } from 'jupyterlab/lib/commandlinker';
 
 const LAUNCHER_CLASS = 'jp-LauncherWidget';
-    
+
+const IMAGE_CLASS = 'jp-LauncherWidget-image';
+
+const TEXT_CLASS = 'jp-LauncherWidget-text';
+
+const ITEM_CLASS = 'jp-LauncherWidget-item';
+
+const FOLDER_CLASS = 'jp-LauncherWidget-folder';
+
+const FOLDER_ICON_CLASS = 'jp-FolderIcon';
+
+const PATH_CLASS = 'jp-LauncherWidget-path';
+
+const CWD_CLASS = 'jp-LauncherWidget-cwd';
+
 const BODY_CLASS = 'jp-LauncherWidget-body';
 
 const DIALOG_CLASS = 'jp-LauncherWidget-dialog';
 
-const TEXT_CLASS = 'jp-LauncherWidget-text';
-
-const IMAGE_CLASS = 'jp-LauncherWidget-image';
+export 
+const RS_LAUNCH_COMMAND = 'rs:launcher:launch'
 
 export
 interface IRSLauncherItem {
@@ -95,7 +108,15 @@ class RSLauncherWidget extends VDomWidget<RSLauncherModel> {
                     item.name
                 );
 
+
+                let launch_attrs = this._linker.populateVNodeAttrs(
+                    { className: ITEM_CLASS },
+                    RS_LAUNCH_COMMAND,
+                    { url: item.url }
+                );
+
                 let child = h.div(
+                    launch_attrs,
                     [icon, label]
                 );
 
@@ -114,4 +135,3 @@ class RSLauncherWidget extends VDomWidget<RSLauncherModel> {
 
     private _linker: ICommandLinker = null;
 }
-
