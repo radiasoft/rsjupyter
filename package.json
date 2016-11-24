@@ -4,7 +4,7 @@
     "url": "https://github.com/radiasoft/rsjupyter/issues"
   },
   "dependencies": {
-    "jupyterlab": "^0.9.0",
+    "jupyterlab": "^0.10.0",
     "jupyter-js-widgets": "2.0.5",
     "phosphor": "^0.7.0"
   },
