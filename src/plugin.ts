@@ -39,7 +39,7 @@ function activateLauncher(app: JupyterLab, palette: ICommandPalette, linker: ICo
     let defaults: IRSLauncherItem[] = [
         {
             name: 'Comsol',
-            url: 'https://comsol.radiasoft.org',
+            url: '/services/comsol',
             imgClass: 'rs-Launcher-Comsol-Image',
         }
     ]

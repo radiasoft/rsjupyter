@@ -11,22 +11,19 @@ if 'develop' in sys.argv or any(a.startswith('bdist') for a in sys.argv):
     import setuptools
 
 setup_args = dict(
-    name                 = 'rsjupyter',
-    version              = '0.0.1',
-    packages             = ['rsjupyter'],
     author               = 'RadiaSoft LLC',
     author_email         = 'pip@radiasoft.net',
-    zip_safe             = False,
-    data_files           = [(
-        'share/jupyter/labextensions/rsjupyter', [
-            'rsjupyter/static/rsjupyter.bundle.js',
-            'rsjupyter/static/rsjupyter.bundle.js.manifest',
-            'rsjupyter/static/rsjupyter.css',
-        ])],
     include_package_data = True,
-    install_requires = [
+    install_requires     = [
         'jupyterlab>=0.8.0',
-    ]
+    ],
+    name                 = 'rsjupyter',
+    packages             = ['rsjupyter'],
+    package_data         = {
+        'rsjupyter': ['static/*.js', 'static/*.css', 'static/*.manifest'],
+    },
+    version              = '0.0.1',
+    zip_safe             = False,
 )
 
 if __name__ == '__main__':
