@@ -53,4 +53,3 @@ jspm_packages
 # Project ignores
 .venv
 lib
-rsjupyter/static

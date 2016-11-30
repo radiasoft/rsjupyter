@@ -1,0 +1,69 @@
+{
+	"entry": "rsjupyter@0.0.1/lib/plugin.js",
+	"hash": "15fa90f67fd76c398bde4cc8fb27ac93",
+	"id": 0,
+	"name": "rsjupyter",
+	"files": [
+		"rsjupyter.bundle.js",
+		"rsjupyter.css"
+	],
+	"modules": {
+		"rsjupyter@0.0.1/lib/plugin.js": [
+			"jupyterlab@^0.10.0/lib/commandpalette/index.js",
+			"jupyterlab@^0.10.0/lib/commandlinker/index.js",
+			"rsjupyter@0.0.1/lib/index.js",
+			"rsjupyter@0.0.1/lib/index.css"
+		],
+		"jupyterlab@0.10.0/lib/commandpalette/index.js": [
+			"phosphor@^0.7.0/lib/core/token.js"
+		],
+		"phosphor@0.7.0/lib/core/token.js": [],
+		"jupyterlab@0.10.0/lib/commandlinker/index.js": [
+			"jupyterlab@0.10.0/lib/commandlinker/commandlinker.js"
+		],
+		"jupyterlab@0.10.0/lib/commandlinker/commandlinker.js": [
+			"phosphor@^0.7.0/lib/core/token.js"
+		],
+		"rsjupyter@0.0.1/lib/index.js": [
+			"phosphor@^0.7.0/lib/algorithm/iteration.js",
+			"phosphor@^0.7.0/lib/core/token.js",
+			"phosphor@^0.7.0/lib/ui/vdom.js",
+			"phosphor@^0.7.0/lib/collections/vector.js",
+			"jupyterlab@^0.10.0/lib/common/vdom.js"
+		],
+		"phosphor@0.7.0/lib/algorithm/iteration.js": [],
+		"phosphor@0.7.0/lib/ui/vdom.js": [],
+		"phosphor@0.7.0/lib/collections/vector.js": [
+			"phosphor@0.7.0/lib/algorithm/iteration.js"
+		],
+		"jupyterlab@0.10.0/lib/common/vdom.js": [
+			"phosphor@^0.7.0/lib/core/signaling.js",
+			"phosphor@^0.7.0/lib/ui/widget.js",
+			"phosphor@^0.7.0/lib/ui/vdom.js"
+		],
+		"phosphor@0.7.0/lib/core/signaling.js": [],
+		"timers-browserify@1.4.2/main.js": [
+			"process@~0.11.0/browser.js"
+		],
+		"process@0.11.9/browser.js": [],
+		"phosphor@0.7.0/lib/ui/widget.js": [
+			"phosphor@0.7.0/lib/algorithm/iteration.js",
+			"phosphor@0.7.0/lib/core/messaging.js",
+			"phosphor@0.7.0/lib/core/properties.js",
+			"phosphor@0.7.0/lib/core/signaling.js",
+			"phosphor@0.7.0/lib/ui/title.js"
+		],
+		"phosphor@0.7.0/lib/core/messaging.js": [
+			"phosphor@0.7.0/lib/algorithm/iteration.js",
+			"phosphor@0.7.0/lib/collections/queue.js"
+		],
+		"phosphor@0.7.0/lib/collections/queue.js": [
+			"phosphor@0.7.0/lib/algorithm/iteration.js"
+		],
+		"phosphor@0.7.0/lib/core/properties.js": [],
+		"phosphor@0.7.0/lib/ui/title.js": [
+			"phosphor@0.7.0/lib/core/signaling.js"
+		],
+		"rsjupyter@0.0.1/lib/index.css": []
+	}
+}
